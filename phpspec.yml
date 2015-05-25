@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Mobly
+        psr4_prefix: Mobly
+        src_path: app
