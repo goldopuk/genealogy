@@ -1,11 +1,18 @@
 <?php namespace Mobly\Http\Controllers;
 
-class Home extends Controller {
 
+use Illuminate\Support\Facades\Session;
+use Mobly\Cart;
+
+class Home extends Controller {
 
 	public function index()
 	{
-		return view('home');
+		session()->regenerate();
+		$list = \Mobly\Product::all();
+		$cart = Cart::getInstance();
+		var_dump($cart);
+		return view('home', ['articles' => $list]);
 	}
 
 
