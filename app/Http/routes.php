@@ -14,3 +14,4 @@
 Route::get('/', 'WelcomeController@index');
 Route::get('/home', 'Home@index');
 Route::post('/product/add', 'Product@add');
+Route::get('/product/show', 'Product@show');

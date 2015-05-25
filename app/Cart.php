@@ -20,8 +20,6 @@ class Cart {
 
 	protected function __construct() {
 
-		var_dump(Session::get('products', []));
-
 		foreach (Session::get('products', []) as $productId) {
 			$product = Product::findOrFail($productId);
 			$this->products[] = $product;

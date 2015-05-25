@@ -10,30 +10,10 @@
 <body>
 <h1>Shop Mobly !!</h1>
 
-<div class="cart">
-	<?
-	$cart = \Mobly\Cart::getInstance();
-	?>
-
-	You have <?= count($cart->getProducts()) ?> product(s) in <a href="<?= url('product/show')?>">your cart.</a>
-</div>
-
-<div class="categories">
-	<h2>Categories</h2>
-	<ul>
-	<?  foreach ($categories as $cat): ?>
-		<li>
-			<a href="<?= url('home/categories') ?>"><?= $cat->name ?></a>
-		</li>
-	<? endforeach ?>
-	</ul>
-</div>
-
-
 <div class="products">
 	<h2>Products</h2>
 	<ul>
-	<?  foreach ($articles as $article): ?>
+	<?  foreach ($category->products as $products): ?>
 		<li>
 			<form action="<?= url('product/add') ?>" method="POST" enctype="application/x-www-form-urlencoded">
 				<?= $article->name ?>

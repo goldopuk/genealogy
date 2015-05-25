@@ -3,16 +3,24 @@
 
 use Illuminate\Support\Facades\Session;
 use Mobly\Cart;
+use Mobly\Category;
 
 class Home extends Controller {
 
 	public function index()
 	{
-		session()->regenerate();
-		$list = \Mobly\Product::all();
-		$cart = Cart::getInstance();
-		var_dump($cart);
-		return view('home', ['articles' => $list]);
+		$products = \Mobly\Product::all();
+		$categories = \Mobly\Category::all();
+		return view('home', ['articles' => $products, 'categories' => $categories]);
+	}
+
+	public function category()
+	{
+		$catId = Request::input('id');
+
+		$category = Category::findOrFail($catId);
+
+		return view('category', ['category' => $category]);
 	}
 
 

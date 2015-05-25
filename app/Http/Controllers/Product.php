@@ -18,6 +18,12 @@ class Product extends Controller {
 		return redirect('home');
 	}
 
+	public function show(Request $request)
+	{
+		return view('cart');
+	}
+
+
 
 
 }
