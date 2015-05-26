@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="Mobly" default="build">
+
+	<target name="build" depends="compile,phpunit,phpcs" />
+	<target name="install" depends="composer,bower" />
+
+	<target name="bower" description="composer">
+		<exec executable="bower" failonerror="true">
+			<arg value="install" />
+		</exec>
+	</target>
+
+	<target name="composer" description="composer">
+		<exec executable="composer" failonerror="true">
+			<arg value="install" />
+		</exec>
+	</target>
+
+	<target name="jshint" description="Check Js Synthax">
+		<exec executable="jshint" failonerror="true">
+			<arg value="public/js" />
+		</exec>
+	</target>
+
+	<target name="compile" description="Check Js Synthax">
+		<exec executable="compass" failonerror="true">
+			<arg value="compile" />
+			<arg value="--config" />
+			<arg value="config.rb" />
+		</exec>
+	</target>
+
+	<target name="watch" description="Check Js Synthax">
+		<exec executable="compass" failonerror="true">
+			<arg value="watch" />
+			<arg value="--config" />
+			<arg value="config.rb" />
+		</exec>
+	</target>
+
+	<target name="phpunit" description="execute phpunit">
+		<exec executable="${basedir}/vendor/bin/phpunit" failonerror="true">
+			<arg line="-d zend.enable_gc=0"/>
+			<arg line="tests"/>
+		</exec>
+	</target>
+
+	<target name="phpcs" description="coding style check">
+		<exec executable="${basedir}/vendor/bin/phpcs" failonerror="true">
+			<arg value="--standard=PSR1" />
+			<arg path="${basedir}/app" />
+		</exec>
+	</target>
+
+</project>
