@@ -15,7 +15,7 @@
 					<?php
 					$cart = \Mobly\Cart::getInstance();
 					?>
-					DEBUG BAR : <a href="<?= url('reset') ?>">reset</a>
+					DEBUG BAR : <a href="<?= url('reset') ?>">reset cart</a>
 				</div>
 			</div>
 		

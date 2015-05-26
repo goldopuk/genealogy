@@ -4,6 +4,10 @@
 
 @section('content')
 
+	<p class="intro">
+		Não sou muito conhecedor em Laravel. Por isso, não estou usando todos os recursos dele, como Service Provider/Container, flash message, etc...
+	</p>
+
 	<div class="main categories">
 		<h3>Categories</h3>
 		<ul class="category-list">
