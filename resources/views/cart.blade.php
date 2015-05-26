@@ -28,6 +28,8 @@
 <? endforeach ?>
 </div>
 
+<a href="<?= url('checkout') ?>">Checkout</a>
+
 
 
 	
