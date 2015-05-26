@@ -4,10 +4,9 @@
 
 @section('content')
 
-
-	<div class="categories">
-		<h2>Categories</h2>
-		<ul>
+	<div class="main categories">
+		<h3>Categories</h3>
+		<ul class="category-list">
 		<?  foreach ($categories as $cat): ?>
 			<li>
 				<a href="<?= url('category', ['id' => $cat->id]) ?>"><?= $cat->name ?></a>

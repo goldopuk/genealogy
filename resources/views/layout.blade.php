@@ -19,7 +19,7 @@
 		
 			<div class="top-bar">
 			
-				<div class="logo"><a href="<?= url('home') ?>">Shop Mobly !!</a></div>
+				<div class="logo"><a href="<?= url('home') ?>">Mobly!</a></div>
 				<div class="search">
 					<form action="<?= url('search') ?>" method="GET">
 						<input type="search" name="s" value="" placeholder="search">

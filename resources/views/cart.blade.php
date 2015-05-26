@@ -4,35 +4,28 @@
 
 @section('content')
 
-<h1><a href="<?= url('home') ?>">Shop Mobly</a> > cart</h1>
+<h3>Your cart</h3>
 
-<div class="cart">
-	<?
-	$cart = \Mobly\Cart::getInstance();
-	?>
-
-	You have <?= count($cart->getProducts()) ?> product(s) in your cart...</a>
-</div>
+<? $cart = \Mobly\Cart::getInstance(); ?>
 
 <div class="categories">
-<?  foreach ($cart->getProducts() as $product): ?>
-	<li>
-		<form action="<?= url('removefromcart') ?>" method="POST" enctype="application/x-www-form-urlencoded">
-			<?= $product->name ?>
+	<ul class="product-list">
+	<?  foreach ($cart->getProducts() as $product): ?>
+		<li>
+			<form action="<?= url('removefromcart') ?>" method="POST" enctype="application/x-www-form-urlencoded">
+				<?= $product->name ?>
 
-			<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-			<input type="hidden" name="product_id" value="<?= $product->id?>">
-			<input type="submit" value="remove from cart"></input>
-		</form>
-	</li>
-<? endforeach ?>
+				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				<input type="hidden" name="product_id" value="<?= $product->id?>">
+				<input type="submit" value="remove from cart"></input>
+			</form>
+		</li>
+	<? endforeach ?>
+	</ul>
 </div>
 
 <a href="<?= url('checkout') ?>">Checkout</a>
 
-
-
-	
 @stop
 
 

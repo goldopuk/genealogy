@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-Route::get('/home', 'Home@index');
+Route::get('/', 'Home@index');
+Route::get('/home', 'Home@home');
 Route::get('/category/{id}', 'Home@category');
 Route::get('/product/{id}', 'Home@product');
 Route::post('/addtocart', 'Home@addToCart');

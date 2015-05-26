@@ -4,10 +4,9 @@
 
 @section('content')
 
-<h1><a href="<?= url('home') ?>">Shop Mobly</a> > <?= $category->name ?></h1>
+<h3><?= $category->name ?></h3>
 
 <div class="products">
-	<h2>Products</h2>
 	<ul>
 	<?  foreach ($category->products as $product): ?>
 		<li>
@@ -22,3 +21,4 @@
 	</ul>
 </div>
 
+@stop

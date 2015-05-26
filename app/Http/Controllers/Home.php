@@ -1,6 +1,5 @@
 <?php namespace Mobly\Http\Controllers;
 
-
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Request;
 use Mobly\Cart;
@@ -9,28 +8,30 @@ use Mobly\Order;
 
 class Home extends Controller {
 
-	public function index()
-	{
+	public function __construct() {
+		$this->middleware('guest');
+	}
+	
+	public function home() {
 		$categories = \Mobly\Category::all();
 		return view('home', ['categories' => $categories]);
 	}
+	
+	public function index() {
+		return redirect('home');
+	}
 
-	public function category($catId)
-	{
+	public function category($catId) {
 		$category = Category::findOrFail($catId);
-
 		return view('category', ['category' => $category]);
 	}
 	
-	public function product($productId)
-	{
-		$product = \Mobly\Product::findOrFail($productId);
-
+	public function product($productId) {
+		$product = \Mobly\Product::findOrFail($productId);	
 		return view('product', ['product' => $product]);
 	}
 	
-	public function addToCart()
-	{
+	public function addToCart() {
 		$productId = Request::input('product_id');
 
 		$product = \Mobly\Product::findOrFail($productId);
@@ -42,8 +43,7 @@ class Home extends Controller {
 		return redirect('home');
 	}
 	
-	public function removeFromCart()
-	{
+	public function removeFromCart() {
 		$productId = Request::input('product_id');
 
 		$product = \Mobly\Product::findOrFail($productId);
@@ -55,8 +55,7 @@ class Home extends Controller {
 		return redirect('home');
 	}
 
-	public function showCart()
-	{
+	public function showCart() {
 		return view('cart');
 	}
 	
@@ -73,7 +72,6 @@ class Home extends Controller {
 		$products = $searchServ->searchProducts($str);
 		
 		return view('search', ['products' => $products]);
-		
 	}
 	
 	public function checkout() {
@@ -89,6 +87,8 @@ class Home extends Controller {
 		$data['city']  = Request::input('city');
 		$data['country']  = Request::input('country');
 		
+		// TODO: to perform some validation here...
+		
 		$order = new Order();
 		$order->data = json_encode($data);
 		
@@ -96,7 +96,5 @@ class Home extends Controller {
 		
 		return redirect('reset');
 	}
-
-
 
 }

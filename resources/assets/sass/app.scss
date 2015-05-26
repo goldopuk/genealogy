@@ -1,5 +1,49 @@
 @import 'compass/css3';
-
+@import "compass/utilities/general/clearfix";
+ 
 body {
+    background: yellow;
+}
+
+.container {
+    background: #eee;
+    padding: 20px;
+}
+
+.main {
+
+}
+
+.debug {
     background: red;
+    padding: 4px 20px;
+    border-radius: 5px;
+    a {
+        color: white;
+    }
+}
+
+.top-bar {
+    @include clearfix;
+    padding: 10px;
+    
+    div {
+        float: left;
+    }
+    
+    .logo {
+        width: 150px;
+        font-size: 30px;
+        text-align: center;
+    }
+    
+    .search {
+        width: 450px;
+        text-align: center;
+    }
+    
+    .cart {
+        width: 300px;
+        float: right;
+    }
 }
