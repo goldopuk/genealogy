@@ -1,0 +1,13 @@
+{
+  "name": "mobly",
+  "version": "0.0.0",
+  "homepage": "https://github.com/goldopuk/mobly",
+  "authors": [
+    "Julien Colomb <juliencolomb@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.3.15"
+  }
+}
