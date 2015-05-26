@@ -79,22 +79,31 @@ class Home extends Controller {
 	}
 	
 	public function saveOrder() {
-		$data = [];
-		$data['fullname'] = Request::input('fullname');
-		$data['email']  = Request::input('email');
-		$data['address']  = Request::input('address');
-		$data['zip']  = Request::input('zip');
-		$data['city']  = Request::input('city');
-		$data['country']  = Request::input('country');
-		
+		$data = Request::all();
+
+		unset($data['_token']); // dirty
+
+		$cart = \Mobly\Cart::getInstance();
+
+		$data['products'] = $cart->getProductIds();
+
 		// TODO: to perform some validation here...
 		
 		$order = new Order();
 		$order->data = json_encode($data);
 		
 		$order->save();
-		
-		return redirect('reset');
+
+		Session::flush();
+
+		return redirect('orderlist');
+	}
+
+	public function orderList() {
+
+		$orders = \Mobly\Order::all();
+
+		return view('order', ['orders' => $orders]);
 	}
 
 }

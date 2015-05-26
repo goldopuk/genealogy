@@ -5,6 +5,19 @@ body {
 	background: #eee;
 }
 
+label {
+	display: inline-block;
+	width: 200px;
+}
+
+.product-list {
+	.title {
+		width: 300px;
+		display: inline-block;
+		text-align: left;
+	}
+}
+
 .container {
 	background: #eee;
 	padding: 20px;

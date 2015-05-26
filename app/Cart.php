@@ -32,8 +32,7 @@ class Cart {
 	}
 	
 	public function remove(\Mobly\Product $product) {
-		$newList = [];
-		
+
 		// this is dirty
 		Session::forget('products');
 		
@@ -49,6 +48,29 @@ class Cart {
 				Session::push('products', $product->id);
 			}
 		}
+	}
+
+	function getTotal() {
+
+		$total = array_reduce($this->products, function ($sum, $el) {
+			$sum += $el->price;
+			return $sum;
+		});
+
+		return $total;
+	}
+
+	function getProductIds() {
+		$ids = array_reduce($this->products, function ($ids, $product) {
+			if ( ! $ids) {
+				$ids = [];
+			}
+
+			$ids[] = $product->id;
+			return $ids;
+		});
+
+		return $ids;
 	}
 
 	public function getProducts() {

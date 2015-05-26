@@ -22,3 +22,4 @@ Route::get('/reset', 'Home@reset');
 Route::get('/search', 'Home@search');
 Route::get('/checkout', 'Home@checkout');
 Route::post('/saveorder', 'Home@saveOrder');
+Route::get('/orderlist', 'Home@orderList');

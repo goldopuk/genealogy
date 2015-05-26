@@ -13,7 +13,7 @@
 	<?  foreach ($cart->getProducts() as $product): ?>
 		<li>
 			<form action="<?= url('removefromcart') ?>" method="POST" enctype="application/x-www-form-urlencoded">
-				<?= $product->name ?>
+				<span class="title"><a href="<?= url('product', ['id' => $product->id]) ?>"><?= $product->name ?></a>: <?= $product->description ?></span>
 
 				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 				<input type="hidden" name="product_id" value="<?= $product->id?>">

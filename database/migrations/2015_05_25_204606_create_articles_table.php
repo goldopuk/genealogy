@@ -26,13 +26,13 @@ class CreateArticlesTable extends Migration {
 		{
 			$table->integer('category_id');
 			$table->integer('product_id');
-			$table->timestamps();
 		});
 
 		Schema::create('category', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('name', 255);
+			$table->text('description');
 			$table->timestamps();
 		});
 

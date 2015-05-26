@@ -9,7 +9,7 @@
 		<ul class="category-list">
 		<?  foreach ($categories as $cat): ?>
 			<li>
-				<a href="<?= url('category', ['id' => $cat->id]) ?>"><?= $cat->name ?></a>
+				<a href="<?= url('category', ['id' => $cat->id]) ?>"><?= $cat->name ?></a> : <?= $cat->description ?>
 			</li>
 		<? endforeach ?>
 		</ul>
