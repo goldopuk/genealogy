@@ -6,3 +6,5 @@ composer.lock
 /.sass-cache
 /public/css
 /public/bower
+install_log.txt
+
