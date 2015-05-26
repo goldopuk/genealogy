@@ -13,5 +13,10 @@
 
 Route::get('/', 'WelcomeController@index');
 Route::get('/home', 'Home@index');
-Route::post('/product/add', 'Product@add');
-Route::get('/product/show', 'Product@show');
+Route::get('/category/{id}', 'Home@category');
+Route::get('/product/{id}', 'Home@product');
+Route::post('/addtocart', 'Home@addToCart');
+Route::post('/removefromcart', 'Home@removeFromCart');
+Route::get('/showcart', 'Home@showCart');
+Route::get('/reset', 'Home@reset');
+Route::get('/search', 'Home@search');

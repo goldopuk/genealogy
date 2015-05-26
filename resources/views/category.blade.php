@@ -1,24 +1,20 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
-<head>
-<meta charset="UTF-8">
-<title>Mobly shop</title>
+@extends('layout')
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-</head>
+@section('title', 'Mobly')
 
-<body>
-<h1>Shop Mobly !!</h1>
+@section('content')
+
+<h1><a href="<?= url('home') ?>">Shop Mobly</a> > <?= $category->name ?></h1>
 
 <div class="products">
 	<h2>Products</h2>
 	<ul>
-	<?  foreach ($category->products as $products): ?>
+	<?  foreach ($category->products as $product): ?>
 		<li>
-			<form action="<?= url('product/add') ?>" method="POST" enctype="application/x-www-form-urlencoded">
-				<?= $article->name ?>
+			<form action="<?= url('addtocart') ?>" method="POST" enctype="application/x-www-form-urlencoded">
+				<a href="<?= url('product', ['id' => $product->id]) ?>"><?= $product->name ?></a>
 				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-				<input type="hidden" name="product_id" value="<?= $article->id?>">
+				<input type="hidden" name="product_id" value="<?= $product->id?>">
 				<input type="submit" value="add to cart"></input>
 			</form>
 		</li>
@@ -26,8 +22,3 @@
 	</ul>
 </div>
 
-
-
-</body>
-
-</html>

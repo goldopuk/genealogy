@@ -1,28 +1,24 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
-<head>
-<meta charset="UTF-8">
-<title>Mobly shop</title>
+@extends('layout')
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-</head>
+@section('title', 'Mobly')
 
-<body>
-<h1>Shop Mobly -> in your cart</h1>
+@section('content')
+
+<h1><a href="<?= url('home') ?>">Shop Mobly</a> > cart</h1>
 
 <div class="cart">
 	<?
 	$cart = \Mobly\Cart::getInstance();
 	?>
 
-	You have <?= count($cart->getProducts()) ?> product(s) </a>
+	You have <?= count($cart->getProducts()) ?> product(s) in your cart...</a>
 </div>
 
 <div class="categories">
 <?  foreach ($cart->getProducts() as $product): ?>
 	<li>
-		<form action="<?= url('product/remove') ?>" method="POST" enctype="application/x-www-form-urlencoded">
-		<?= $product->name ?>
+		<form action="<?= url('removefromcart') ?>" method="POST" enctype="application/x-www-form-urlencoded">
+			<?= $product->name ?>
 
 			<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 			<input type="hidden" name="product_id" value="<?= $product->id?>">
@@ -34,6 +30,8 @@
 
 
 
-</body>
+	
+@stop
 
-</html>
+
+

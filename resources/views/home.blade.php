@@ -1,53 +1,35 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
-<head>
-<meta charset="UTF-8">
-<title>Mobly shop</title>
+@extends('layout')
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-</head>
+@section('title', 'Mobly')
 
-<body>
-<h1>Shop Mobly !!</h1>
+@section('content')
 
-<div class="cart">
-	<?
-	$cart = \Mobly\Cart::getInstance();
-	?>
+	<h1><a href="<?= url('home') ?>">Shop Mobly !!</a></h1>
+	
+	<form action="<?= url('search') ?>" method="GET">
+		<input type="search" name="s" value="" placeholder="search">
+		<input type="submit" value="search"></input>
+	</form>
 
-	You have <?= count($cart->getProducts()) ?> product(s) in <a href="<?= url('product/show')?>">your cart.</a>
-</div>
+	<div class="cart">
+		<?
+		$cart = \Mobly\Cart::getInstance();
+		?>
 
-<div class="categories">
-	<h2>Categories</h2>
-	<ul>
-	<?  foreach ($categories as $cat): ?>
-		<li>
-			<a href="<?= url('home/categories') ?>"><?= $cat->name ?></a>
-		</li>
-	<? endforeach ?>
-	</ul>
-</div>
+		You have <?= count($cart->getProducts()) ?> product(s) in <a href="<?= url('showcart')?>">your cart.</a>
+	</div>
 
+	<div class="categories">
+		<h2>Categories</h2>
+		<ul>
+		<?  foreach ($categories as $cat): ?>
+			<li>
+				<a href="<?= url('category', ['id' => $cat->id]) ?>"><?= $cat->name ?></a>
+			</li>
+		<? endforeach ?>
+		</ul>
+	</div>
+	
+@stop
 
-<div class="products">
-	<h2>Products</h2>
-	<ul>
-	<?  foreach ($articles as $article): ?>
-		<li>
-			<form action="<?= url('product/add') ?>" method="POST" enctype="application/x-www-form-urlencoded">
-				<?= $article->name ?>
-				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-				<input type="hidden" name="product_id" value="<?= $article->id?>">
-				<input type="submit" value="add to cart"></input>
-			</form>
-		</li>
-	<? endforeach ?>
-	</ul>
-</div>
-
-
-
-</body>
-
-</html>
+   

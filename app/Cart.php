@@ -30,6 +30,26 @@ class Cart {
 		$this->products[] = $product;
 		Session::push('products', $product->id);
 	}
+	
+	public function remove(\Mobly\Product $product) {
+		$newList = [];
+		
+		// this is dirty
+		Session::forget('products');
+		
+		$products = $this->products;
+		$this->products = [];
+		$removed  = false; // kludge to just filter the first item
+		
+		foreach ($products as $curProduct) {
+			if ( ! $removed && $curProduct->id === $product->id) {	
+				$removed = true;
+			} else {
+				$this->products[] = $curProduct;
+				Session::push('products', $product->id);
+			}
+		}
+	}
 
 	public function getProducts() {
 		return $this->products;
