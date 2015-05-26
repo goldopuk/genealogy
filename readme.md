@@ -5,9 +5,8 @@
 ### mysql 
 CREATE DATABASE mobly;
 
-### configure app
+### configure app - change db credentials
 cp .env.example .env
-change db credentials
 
 ### dependencies
 1. compass
@@ -22,6 +21,7 @@ change db credentials
 
 ### populate db
 php artisan migrate:refresh
+
 php artisan db:seed
 
 ### install composer dependencies
@@ -29,6 +29,7 @@ ant composer
 
 ### install bower dependencies
 cd public/
+
 bower install
 
 ### compile css
