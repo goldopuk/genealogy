@@ -1,23 +1,39 @@
-### install install Sass e Compass
-gem install compass
+### php configuration
+1. >=5.4
+2. short_open_tag = On
 
-### composer
-composer install
+### mysql 
+CREATE DATABASE mobly;
+
+### configure app
+cp .env.example .env
+change db credentials
+
+### populate db
+php artisan migrate:refresh
+php artisan db:seed
+
+### dependencies
+1. compass
+2. bower
+3. composer
+4. ant
+
+### install composer dependencies
+ant composer
+
+### install bower dependencies
+cd public/
+bower install
 
 ### compile css
-compass compile
+ant compile
 
 ### run tests
-phpunit tests
+ant phpunit
 
-### codesniffer
+### check coding synthax
 ant phpcs
 
-### phpdoc
-ant phpdoc
-
-### Php Mess Detector
-ant phpmd
-
-### do everything
-ant
+### start app with php webserver embed
+php -S localhost:7777 public/index.php

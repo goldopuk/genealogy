@@ -5,3 +5,4 @@ composer.lock
 .idea
 /.sass-cache
 /public/css
+/public/bower

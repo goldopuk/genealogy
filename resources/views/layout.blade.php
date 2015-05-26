@@ -1,20 +1,22 @@
 <!DOCTYPE html>  
 <html lang="en">
-    <head>
+	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-        <title>App Name - @yield('title')</title>
+		<title>Mobly - @yield('title')</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{{ asset('css/app.css') }}">   
-    </head>
-    <body>
-		 <div class="container">
-	
-			<div class="debug">
-				<?
-				$cart = \Mobly\Cart::getInstance();
-				?>
-				<a href="<?= url('reset') ?>">reset</a>
+		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+	</head>
+	<body>
+		<div class="container">
+			<div  class="debug-bar" ng-controller="DebugController">
+				<a class="btn-toggle" ng-click="toggleBar()">toggle bar</a>
+				<div class="debug" ng-if="show">
+					<?php
+					$cart = \Mobly\Cart::getInstance();
+					?>
+					DEBUG BAR : <a href="<?= url('reset') ?>">reset</a>
+				</div>
 			</div>
 		
 			<div class="top-bar">
@@ -28,17 +30,18 @@
 				</div>
 
 				<div class="cart">
-					<?
-					$cart = \Mobly\Cart::getInstance();
-					?>
+					<?php $cart = \Mobly\Cart::getInstance(); ?>
 
 					You have <?= count($cart->getProducts()) ?> product(s) in <a href="<?= url('showcart')?>">your cart.</a>
 				</div>
 			
 			</div>
-	
-       
-            @yield('content')
-        </div>
-    </body>
+
+			@yield('content')
+		</div>
+
+		<script src="{{ asset('bower/jquery/dist/jquery.min.js') }}"></script>
+		<script src="{{ asset('bower/angular/angular.min.js') }}"></script>
+		<script src="{{ asset('js/app.js') }}"></script>
+	</body>
 </html>

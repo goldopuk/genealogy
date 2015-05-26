@@ -8,7 +8,7 @@ class SearchServiceTest extends TestCase {
 		
 		$products = $searchServ->searchProducts('tom');
 		
-		$this->assertEquals(2, count($products));
+		$this->assertEquals(1, count($products));
 	}
 
 }
