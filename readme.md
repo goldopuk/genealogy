@@ -6,7 +6,12 @@
 CREATE DATABASE mobly;
 
 ### configure app - change db credentials
+
+#### copy file
 cp .env.example .env
+
+#### edit it configuration
+vi .env
 
 ### dependencies
 1. compass
@@ -18,6 +23,9 @@ cp .env.example .env
 ./install.sh
 
 ### Or manually...
+
+### permission
+chmod -R 777 storage/ vendor/
 
 ### populate db
 php artisan migrate:refresh
@@ -42,4 +50,6 @@ ant phpunit
 ant phpcs
 
 ### start app with php webserver embed
-php -S localhost:7777 public/
+cd public
+
+php -S localhost:7777

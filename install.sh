@@ -2,6 +2,9 @@
 
 echo "" > install_log.txt
 
+echo "Giving permissions"
+chmod -R 777 storage/ vendor/
+
 echo "Installing composer dependencies..."
 ant composer >> ./install_log.txt
 
