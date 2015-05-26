@@ -11,10 +11,15 @@ label {
 }
 
 .product-list {
-	.title {
-		width: 300px;
-		display: inline-block;
-		text-align: left;
+	li {
+		margin-bottom: 10px;
+		display: block;
+
+		.title {
+			width: 300px;
+			display: inline-block;
+			text-align: left;
+		}
 	}
 }
 

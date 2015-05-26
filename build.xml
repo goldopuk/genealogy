@@ -3,7 +3,6 @@
 <project name="Mobly" default="build">
 
 	<target name="build" depends="compile,phpunit,phpcs" />
-	<target name="install" depends="composer,bower" />
 
 	<target name="bower" description="composer">
 		<exec executable="bower" failonerror="true">
@@ -51,6 +50,12 @@
 			<arg value="--standard=PSR1" />
 			<arg path="${basedir}/app" />
 		</exec>
+	</target>
+
+	<target name="clean" description="remove files for fresh install">
+		<delete dir="${basedir}/vendor"/>
+		<delete dir="${basedir}/public/bower"/>
+		<delete dir="${basedir}/public/css"/>
 	</target>
 
 </project>

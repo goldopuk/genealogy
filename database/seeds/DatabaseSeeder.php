@@ -19,7 +19,8 @@ class TableSeeder extends Seeder {
 		DB::table('product')->delete();
 		DB::table('category')->delete();
 		DB::table('category_product')->delete();
-		
+		DB::table('order')->delete();
+
 		$catBook = Mobly\Category::create(['name' => 'Books', 'description' => 'just some books']);
 		$catElec = Mobly\Category::create(['name' => 'Electonics', 'description' => 'just some electronics']);
 		$catFurniture = Mobly\Category::create(['name' => 'Furniture', 'description' => 'amazing furnitures']);
@@ -27,37 +28,37 @@ class TableSeeder extends Seeder {
 		$tom = Mobly\Product::create(['name' => 'Tom Sawer', 'description' => 'good book', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);
 		$tom->categories()->attach($catBook->id);
 		
-		$cd = Mobly\Product::create(['name' => 'Cd player XS200', 'description' => 'good cd player', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);
+		$cd = Mobly\Product::create(['name' => 'Cd player XS200', 'description' => 'good cd player', 'price' => 30, 'image' => 'http://lorempixel.com/100/100']);
 		$cd->categories()->attach($catElec->id);
 		
-		$electro = Mobly\Product::create(['name' => 'Camera Panasonic XL100', 'description' => 'good camera', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);
+		$electro = Mobly\Product::create(['name' => 'Camera Panasonic XL100', 'description' => 'good camera', 'price' => 78, 'image' => 'http://lorempixel.com/100/100']);
 		$electro->categories()->attach($catElec->id);
 		
 		$electro = Mobly\Product::create(['name' => 'MacBook air 11', 'description' => 'good mac', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);
 		$electro->categories()->attach($catElec->id);
 			
-		$electro = Mobly\Product::create(['name' => 'Apple Watch', 'description' => 'good watch', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);
+		$electro = Mobly\Product::create(['name' => 'Apple Watch', 'description' => 'good watch', 'price' => 32, 'image' => 'http://lorempixel.com/100/100']);
 		$electro->categories()->attach($catElec->id);
 		
-		$book = Mobly\Product::create(['name' => 'Lord of the Rings', 'description' => 'good book', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);
+		$book = Mobly\Product::create(['name' => 'Lord of the Rings', 'description' => 'good book', 'price' => 54, 'image' => 'http://lorempixel.com/100/100']);
 		$book->categories()->attach($catBook->id);
 	
-		$book = Mobly\Product::create(['name' => 'The Hitchhiker\'s Guide to the Galaxy', 'description' => 'good book', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);
+		$book = Mobly\Product::create(['name' => 'The Hitchhiker\'s Guide to the Galaxy', 'description' => 'good book', 'price' => 59, 'image' => 'http://lorempixel.com/100/100']);
 		$book->categories()->attach($catBook->id);
 		
-		$book = Mobly\Product::create(['name' => 'Moby Dick', 'description' => 'bad book', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);
+		$book = Mobly\Product::create(['name' => 'Moby Dick', 'description' => 'bad book', 'price' => 9, 'image' => 'http://lorempixel.com/100/100']);
 		$book->categories()->attach($catBook->id);
 		
 		$book = Mobly\Product::create(['name' => 'Bahia de todos os santos', 'description' => 'cool book', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);
 		$book->categories()->attach($catBook->id);
 		
-		$furniture = Mobly\Product::create(['name' => 'Sofa', 'description' => 'cool sofa', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);
+		$furniture = Mobly\Product::create(['name' => 'Sofa', 'description' => 'cool sofa', 'price' => 45, 'image' => 'http://lorempixel.com/100/100']);
 		$furniture->categories()->attach($catFurniture->id);
 		
-		$furniture = Mobly\Product::create(['name' => 'Bed', 'description' => 'good bed', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);
+		$furniture = Mobly\Product::create(['name' => 'Bed', 'description' => 'good bed', 'price' => 23, 'image' => 'http://lorempixel.com/100/100']);
 		$furniture->categories()->attach($catFurniture->id);
 		
-		$furniture = Mobly\Product::create(['name' => 'Shelf' , 'description' => 'good shelf', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);
+		$furniture = Mobly\Product::create(['name' => 'Shelf' , 'description' => 'good shelf', 'price' => 56, 'image' => 'http://lorempixel.com/100/100']);
 		$furniture->categories()->attach($catFurniture->id);
 		
 		$furniture = Mobly\Product::create(['name' => 'Chair', 'description' => 'good chair', 'price' => 20, 'image' => 'http://lorempixel.com/100/100']);

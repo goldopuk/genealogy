@@ -79,16 +79,22 @@ class Home extends Controller {
 	}
 	
 	public function saveOrder() {
-		$data = Request::all();
+		$data = Request::input('form');
 
-		unset($data['_token']); // dirty
+		foreach ($data as $key => $value) {
+			if ( ! $value) {
+				unset($data[$key]);
+			}
+		}
+
+		if ( ! $data) {
+			throw new \Exception('Form invalid');
+		}
 
 		$cart = \Mobly\Cart::getInstance();
 
 		$data['products'] = $cart->getProductIds();
 
-		// TODO: to perform some validation here...
-		
 		$order = new Order();
 		$order->data = json_encode($data);
 		

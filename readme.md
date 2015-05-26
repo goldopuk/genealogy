@@ -9,15 +9,20 @@ CREATE DATABASE mobly;
 cp .env.example .env
 change db credentials
 
-### populate db
-php artisan migrate:refresh
-php artisan db:seed
-
 ### dependencies
 1. compass
 2. bower
 3. composer
 4. ant
+
+### install automatic...
+./install.sh
+
+### Or manually...
+
+### populate db
+php artisan migrate:refresh
+php artisan db:seed
 
 ### install composer dependencies
 ant composer
@@ -36,4 +41,4 @@ ant phpunit
 ant phpcs
 
 ### start app with php webserver embed
-php -S localhost:7777 public/index.php
+php -S localhost:7777 public/
